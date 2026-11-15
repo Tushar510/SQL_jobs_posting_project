@@ -17,12 +17,17 @@ SELECT
 
 FROM 
     job_postings_fact  jp
-LEFT JOIN company_dim ON jp.company_id = company_dim.company_id
+LEFT JOIN 
+    company_dim 
+    ON
+     jp.company_id = company_dim.company_id
 WHERE
-    job_title_short = 'Data Analyst' AND
-    job_location = 'Anywhere' AND
-    salary_year_avg IS NOT NULL
+    jp.job_title_short = 'Data Analyst' AND
+    jp.job_location = 'Anywhere' AND
+    jp.salary_year_avg IS NOT NULL
    
 ORDER BY
-    salary_year_avg DESC
+    jp.salary_year_avg DESC
 LIMIT 10;   
+
+SELECT * FROM skills_dim LIMIT 10; 
